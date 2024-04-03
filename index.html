@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя любимая Алёна</title>
+    <!-- Подключаем библиотеку Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            color: #333;
+            background: linear-gradient(to bottom, #ffcccc, #ff99cc); /* Статичный градиент */
+        }
+        
+        #container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 28px; /* Уменьшаем размер заголовка для мобильных устройств */
+        }
+        
+        main {
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+        
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: heartbeat 1s infinite alternate; /* Анимация пульсации */
+        }
+
+        .heart:nth-child(odd) {
+            animation: none; /* Отключение анимации плавания вверх */
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+        
+        /* Стили для текста */
+        p {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin: 20px;
+        }
+
+        /* Стили для сердечек */
+        .heart-icon {
+            color: #FF6666;
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+
+        /* Стили для подвала */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            z-index: 1; /* Отправляем подвал за фон сердечек */
+            background-color: #bfbfbf; /* Серый цвет футера */
+        }
+
+        /* Стили для кирпичиков в подвале */
+        .brick {
+            display: inline-block;
+            width: 20px;
+            height: 10px;
+            background-color: #666; /* Темно-серый цвет кирпичика */
+            margin: 0 5px;
+            position: fixed;
+            z-index: 0; /* Отправляем кирпичики под текст и фон */
+        }
+
+        /* Вариации цвета кирпичиков */
+        .brick:nth-child(odd) {
+            background-color: #555; /* Более темный оттенок */
+        }
+    </style>
+</head>
+<body>
+    <!-- Множество сердечек на заднем фоне -->
+    <div class="hearts">
+        <!-- Generate hearts dynamically -->
+        <!-- You can adjust the number of hearts by changing the count in the loop -->
+        <!-- For more hearts, increase the count -->
+        <!-- For less hearts, decrease the count -->
+        <!-- The size and position of hearts are randomized -->
+        <!-- Adjust the parameters if needed -->
+        <script>
+            const container = document.querySelector('.hearts');
+            const count = 1000; // Number of hearts
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '<i class="fa-solid fa-heart heart-icon"></i>'; /* Используем иконку сердца из Font Awesome */
+                heart.style.left = `${Math.random() * window.innerWidth}px`; /* Случайная координата left в пределах окна браузера */
+                heart.style.top = `${Math.random() * window.innerHeight}px`; /* Случайная координата top в пределах окна браузера */
+                container.appendChild(heart);
+            }
+        </script>
+    </div>
+
+    <div id="container">
+        <h1>Моя прекрасная девушка Алёна</h1>
+        <main>
+            <i class="fa-solid fa-heart heart-icon"></i>
+            <p>
+                <i class="fa-solid fa-heart heart-icon"></i>
+                Я люблю тебя больше, чем можно выразить словами. Ты - моя радость, мое счастье и мой источник вдохновения.
+                <i class="fa-solid fa-heart heart-icon"></i>
+            </p>
+            <i class="fa-solid fa-heart heart-icon"></i>
+        </main>
+    </div>
+    <!-- Подвал с текстом -->
+    <footer>
+        <div class="brick" style="left: 10px; bottom: 10px;"></div>
+        <div class="brick" style="left: 50px; bottom: 40px;"></div>
+        <div class="brick" style="left: 90px; bottom: 70px;"></div>
+        <div class="brick" style="right: 10px; bottom: 10px;"></div>
+        <div class="brick" style="right: 50px; bottom: 40px;"></div>
+        <div class="brick" style="right: 90px; bottom: 70px;"></div>
+
+        <p>Не думаю, что парни твоих подруг могут так :))), повод гордиться мной</p>
+    </footer>
+</body>
+</html>
